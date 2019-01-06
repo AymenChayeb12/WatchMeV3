@@ -24,6 +24,7 @@ public class Movie implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
+	//fasa5ni
 	public String getName() {
 		return name;
 	}

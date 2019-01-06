@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Users</title>
+<link rel="stylesheet" type="text/css" 
+href="../static/css/bootstrap.min.css"
+th:href="@{css/bootstrap.min.css}"
+/>
+
+</head>
+<body>
+
+<div class="container">
+<h3>Movies</h3>
+
+
+ <table  class="table">
+	 <thead>
+		  <tr>
+		  	<th>ID</th>
+		    <th>name</th>
+		    <th>genre</th>
+		    
+		
+		  </tr>
+	  </thead>
+	  <tbody>
+	  		<tr th:each= "m:${listMovies}">
+	  		<td th:text="${m.id}"></td>
+	  	    <td th:text="${m.name}"></td>
+	  	    <td th:text="${m.genre}"></td>
+
+	  	   <td><a th:href="@{delete(id=${m.id})}">Delete</a></td>
+			
+				  		
+	  		</tr>
+	  </tbody>
+  
+</table>
+
+<a th:href="@{addMovie}">Add New Movie</a></td>
+</div> 
+</body>
+</html>
