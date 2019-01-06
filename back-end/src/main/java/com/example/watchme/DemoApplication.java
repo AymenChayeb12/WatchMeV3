@@ -8,13 +8,20 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.watchme.entites.Comment;
 import com.example.watchme.entites.Movie;
 import com.example.watchme.services.MovieService;
+
+import com.example.watchme.services.UserService;
+
+
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner   {
 	@Autowired
 	MovieService movieService;
+	@Autowired
+	 UserService userService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -27,6 +34,14 @@ public class DemoApplication implements CommandLineRunner   {
 		//movieService.getAllMovies().forEach(m->{
 			//System.out.println(m.getGenre());
 	//	});
+		userService.addUser("Mohamed", "saleh", "500");
+
+		
+
+
+		  
+		Comment c = new Comment("This is the first comment");
+		userService.addComment((long) 58,c);
 			
 			 final String url = 
 		                "https://yts.am/";

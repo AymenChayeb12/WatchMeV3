@@ -1,32 +1,49 @@
 <div class="row">
-  <div class="col-md-12 col-lg-4 col-xxxl-4">
+  <div  class="col-md-12 col-lg-16 col-xxxl-4">
     <nb-card>
-      <nb-card-header>Common Datepicker</nb-card-header>
+      <nb-card-header>Movie</nb-card-header>
       <nb-card-body>
-        <input nbInput
-               placeholder="Form Picker"
-               [nbDatepicker]="formpicker">
-        <nb-datepicker #formpicker></nb-datepicker>
-      </nb-card-body>
-    </nb-card>
-  </div>
+        <nb-card-header>Spider-Man</nb-card-header>
 
-  <div class="col-md-12 col-lg-4 col-xxxl-4">
-    <nb-card>
-      <nb-card-header>Datepicker With Range</nb-card-header>
-      <nb-card-body>
-        <input nbInput placeholder="Range Picker" [nbDatepicker]="rangepicker">
-        <nb-rangepicker #rangepicker></nb-rangepicker>
       </nb-card-body>
     </nb-card>
   </div>
-  <div class="col-md-12 col-lg-4 col-xxxl-4">
+  
+  <div class="col-md-12 col-lg-8 col-xxxl-4">
     <nb-card>
-      <nb-card-header>Datepicker With Disabled Min Max Values</nb-card-header>
+      <nb-card-header>Comments</nb-card-header>
+      <div *ngFor="let item of comments" >
       <nb-card-body>
-        <input nbInput placeholder="Min Max Picker" [nbDatepicker]="picker">
-        <nb-datepicker #picker [min]="min" [max]="max"></nb-datepicker>
+        {{item.body}}
+      </nb-card-body>
+    </div>
+    </nb-card>
+  </div>
+    <div class="col-md-12 col-lg-4 col-xxxl-4">
+    <nb-card>
+      <nb-card-header>Date</nb-card-header>
+      <div  *ngFor="let item of comments" >
+      <nb-card-body>
+         {{item.date}}
+         
+      </nb-card-body>
+    </div>
+    </nb-card>
+  </div>
+  
+  <div #button class="col-md-12 col-lg-16 col-xxxl-4">
+    <nb-card>
+      <nb-card-header>New Comment</nb-card-header>
+      <nb-card-body>
+        <input #comment  nbInput placeholder="Comment" /> 
+        <div>
+        <button  nbButton (click)="Onclick(button)">Add Comment</button >
+        </div>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
+
+<!-- <div *ngFor="let item of comments" >
+  {{item.body}}
+</div> -->

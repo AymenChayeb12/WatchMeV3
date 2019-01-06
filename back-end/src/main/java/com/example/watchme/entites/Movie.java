@@ -1,10 +1,14 @@
 package com.example.watchme.entites;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
@@ -18,6 +22,14 @@ public class Movie implements Serializable {
 	private String rate;
 	private String genre;
 	private String link;
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	private List<Comment> comments;
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 	public long getId() {
 		return id;
 	}
@@ -74,6 +86,15 @@ public class Movie implements Serializable {
 		this.genre=genre;
 		
 	}
+	public Movie(String name, String rate, String genre, String link, List<Comment> comments) {
+		super();
+		this.name = name;
+		this.rate = rate;
+		this.genre = genre;
+		this.link = link;
+		this.comments = comments;
+	}
+	
 	
 	
 

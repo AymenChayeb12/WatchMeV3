@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.watchme.entites.Comment;
 import com.example.watchme.entites.Movie;
 import com.example.watchme.services.MovieService;
 
@@ -23,6 +25,8 @@ public class MovieRestService {
 	
 	@Autowired
 	MovieService movieservice;
+	
+	
 	
 	
 	
@@ -56,7 +60,22 @@ public class MovieRestService {
 		return movieservice.getAllMovies();
 	}
 	
+	///////////////////////////////////////
+	@RequestMapping(value = "/movieComment",method=RequestMethod.GET)
+	public List<Comment> getAllComments(@RequestParam("id")  Long id){
+		return movieservice.getAllComment(id);
+	}
 	
+	@RequestMapping(value = "/addCommentToMovie/{id}",method=RequestMethod.POST)
+	public String addComment(@RequestBody Comment c,@PathVariable Long id){
+		try {
+			movieservice.addComment(id, c);
+			return "success";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return e.toString();
+		}
+	}
 
 		
 	

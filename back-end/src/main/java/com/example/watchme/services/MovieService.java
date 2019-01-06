@@ -9,7 +9,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.watchme.entites.Comment;
 import com.example.watchme.entites.Movie;
+import com.example.watchme.entites.User;
 
 
 @Transactional 
@@ -56,6 +58,19 @@ public class MovieService {
 	Movie m = em.find(Movie.class, movieId);
 	em.remove(m);
 
+	}
+	///////////////////////////////////////
+	
+	public void addComment(Long movieId,Comment comment) {
+		Movie m = em.find(Movie.class, movieId);
+		em.persist(comment);
+		m.getComments().add(comment);
+		em.merge(m);
+	}
+	
+	public List<Comment>getAllComment(Long movieId){
+		Movie m = em.find(Movie.class, movieId);
+		return m.getComments();
 	}
 	
 	

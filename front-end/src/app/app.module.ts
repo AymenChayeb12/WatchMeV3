@@ -16,6 +16,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PurchaseService } from './services/purchase.service';
 import { MovieService } from './services/movie.service';
+import { CommentService } from './././services/comment.service';
 import {TableModule} from 'primeng/table';
 
 
@@ -36,7 +37,8 @@ import {TableModule} from 'primeng/table';
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     PurchaseService,
-    MovieService
+    MovieService,
+    CommentService
   ],
 })
 export class AppModule {
